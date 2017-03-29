@@ -13,7 +13,7 @@
 # limitations under the License.
 
 # Inherit from those products. Most general first.
-$(call inherit-product, vendor/cm/config/common_full_tablet_wifionly.mk)
+#$(call inherit-product, vendor/cm/config/common_full_tablet_wifionly.mk)
 # Inherit from goyawifispecific device
 $(call inherit-product, device/samsung/goyawifi/device_goyawifi.mk)
 

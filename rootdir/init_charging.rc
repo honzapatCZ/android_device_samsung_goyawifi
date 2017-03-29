@@ -580,4 +580,4 @@ on property:sys.usb.config=rndis,marvell_modem,marvell_diag,adb
     write /sys/class/android_usb/android0/enable 1
     start adbd
     setprop sys.usb.state ${sys.usb.config}
-#---------------------setting the usb--------------------------------- end#  
+#---------------------setting the usb--------------------------------- end#

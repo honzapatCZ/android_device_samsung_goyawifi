@@ -13,10 +13,10 @@ PRODUCT_PROPERTY_OVERRIDES := \
 
 # Init files
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/init.pxa988.rc:root/init.pxa988.rc \ 
+    $(LOCAL_PATH)/rootdir/init.pxa988.rc:root/init.pxa988.rc \
     $(LOCAL_PATH)/rootdir/init.pxa988.usb.rc:root/init.pxa988.usb.rc \
-    $(LOCAL_PATH)/rootdir/ueventd.pxa988.rc:root/ueventd.pxa988.rc \
     $(LOCAL_PATH)/rootdir/lpm.rc:root/lpm.rc \
+    $(LOCAL_PATH)/rootdir/ueventd.pxa988.rc:root/ueventd.pxa988.rc \
     $(LOCAL_PATH)/rootdir/init_charging.rc:root/init_charging.rc \
     $(LOCAL_PATH)/rootdir/fstab.pxa988:root/fstab.pxa988
 
