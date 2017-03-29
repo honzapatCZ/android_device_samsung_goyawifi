@@ -23,7 +23,6 @@ PRODUCT_COPY_FILES += \
 
 # Recovery rootdir
 PRODUCT_COPY_FILES += \
-    PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/recovery/init.recovery.pxa988.rc:root/init.recovery.pxa988.rc \
     $(LOCAL_PATH)/recovery/twrp.fstab:recovery/root/twrp.fstab
 
