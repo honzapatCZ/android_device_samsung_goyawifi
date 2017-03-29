@@ -12,16 +12,20 @@ PRODUCT_PROPERTY_OVERRIDES := \
     ro.carrier=wifi-only
 
 # Init files
-PRODUCT_PACKAGES += \
-    fstab.pxa988 \
-    init_charging.rc \
-    ueventd.pxa988.rc \
-    lpm.rc
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/rootdir/init.pxa988.rc:root/init.pxa988.rc \ 
+    $(LOCAL_PATH)/rootdir/init.pxa988.usb.rc:root/init.pxa988.usb.rc \
+    $(LOCAL_PATH)/rootdir/ueventd.pxa988.rc:root/ueventd.pxa988.rc \
+    $(LOCAL_PATH)/rootdir/lpm.rc:root/lpm.rc \
+    $(LOCAL_PATH)/rootdir/init_charging.rc:root/init_charging.rc \
+    $(LOCAL_PATH)/rootdir/fstab.pxa988:root/fstab.pxa988
+
 
 # Recovery rootdir
 PRODUCT_COPY_FILES += \
+    PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/recovery/init.recovery.pxa988.rc:root/init.recovery.pxa988.rc \
-    $(LOCAL_PATH)/recovery/twrp.fstab:recovery/root/etc/twrp.fstab
+    $(LOCAL_PATH)/recovery/twrp.fstab:recovery/root/twrp.fstab
 
 # Enable repeatable keys in cwm
 PRODUCT_PROPERTY_OVERRIDES += \
