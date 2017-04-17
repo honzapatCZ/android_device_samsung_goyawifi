@@ -1,5 +1,7 @@
 on init
 
+    export SECONDARY_STORAGE /external_sd
+
     # ko files for exfat
     insmod /system/lib/modules/exfat_core.ko
     insmod /system/lib/modules/exfat_fs.ko

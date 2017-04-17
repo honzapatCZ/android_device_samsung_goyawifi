@@ -12,14 +12,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Inherit from those products. Most specific first.
-$(call inherit-product, vendor/cm/config/common_full_tablet_wifionly.mk)
-# Inherit from goyawifi device
-$(call inherit-product, device/samsung/goyawifi/device_goyawifi.mk)
+# HAL module implementation stored in
+# hw/<POWERS_HARDWARE_MODULE_ID>.<ro.hardware>.so
 
-# Set those variables here to overwrite the inherited values.
-PRODUCT_DEVICE := goyawifi
-PRODUCT_NAME := cm_goyawifi
-PRODUCT_BRAND := Samsung
-PRODUCT_MODEL := SM-T110
-PRODUCT_MANUFACTURER := samsung
+LOCAL_PATH := $(call my-dir)
+
+include $(CLEAR_VARS)
+
+LOCAL_MODULE := consumerir.mrvl
+LOCAL_MODULE_PATH := $(TARGET_OUT_SHARED_LIBRARIES)/hw
+LOCAL_SRC_FILES := consumerir.c
+LOCAL_SHARED_LIBRARIES := liblog libcutils
+LOCAL_MODULE_TAGS := optional
+
+include $(BUILD_SHARED_LIBRARY)

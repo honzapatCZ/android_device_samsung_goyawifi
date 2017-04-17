@@ -1,2 +1,2 @@
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/full_goyawifi.mk
+    $(LOCAL_DIR)/device_goyawifi.mk

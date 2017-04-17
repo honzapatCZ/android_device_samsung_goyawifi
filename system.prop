@@ -1,4 +1,16 @@
 #
-# system.prop for goyawifi
+# system.prop for lt02wifi
 #
+# rotation setting in potrait mode.
+ro.sf.hwrotation=270
 
+ro.config.used_hw_vsync=0
+
+ro.carrier=wifi-only
+
+# System property for Default Brightness
+ro.lcd_brightness=195
+ro.sf.lcd_density=160
+
+# minimum brightness value
+ro.lcd_min_brightness=20

@@ -1,4 +1,3 @@
-# Copyright (C) 2013 The CyanogenMod Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,7 +13,7 @@
 #
 
 # inherit from the proprietary version
--include vendor/samsung/goyawifi/BoardConfigVendor.mk
+#-include vendor/samsung/goyawifi/BoardConfigVendor.mk
 
 # Target info
 USE_CAMERA_STUB := true
@@ -31,7 +30,7 @@ TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_VARIANT := cortex-a9
 TARGET_CPU_SMP := true
 
-TARGET_BOOTLOADER_BOARD_NAME := PXA986
+TARGET_BOOTLOADER_BOARD_NAME := PXA988
 ARCH_ARM_HAVE_TLS_REGISTER := true
 
 TARGET_GLOBAL_CFLAGS += -mtune=cortex-a9 -mfpu=neon -mfloat-abi=softfp
@@ -41,9 +40,11 @@ TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a9 -mfpu=neon -mfloat-abi=softfp
 TARGET_KERNEL_SOURCE  := kernel/samsung/goyawifi
 #TARGET_KERNEL_CONFIG  := pxa986_goyawifi_rev02_defconfig
 TARGET_KERNEL_CONFIG  := pxa986_goyawifi_rev02_recovery_defconfig
-BOARD_KERNEL_CMDLINE  := 
-BOARD_KERNEL_BASE     := 0x10000000
-BOARD_MKBOOTIMG_ARGS  := --ramdisk_offset 0x01000000
+BOARD_KERNEL_CMDLINE  := console=ttyS1,115200n8
+#BOARD_KERNEL_BASE     := 0x10000000
+BOARD_KERNEL_BASE := 0x00000000
+#BOARD_MKBOOTIMG_ARGS  := --ramdisk_offset 0x01000000
+BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x01000000 --tags_offset 0x00000100 --dt device/samsung/goyawifi/dt.img
 BOARD_KERNEL_PAGESIZE := 2048
     
 # Recovery
@@ -54,17 +55,22 @@ BOARD_HAS_NO_MISC_PARTITION := true
 BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_RECOVERY_SWIPE := true
 RECOVERY_FSTAB_VERSION := 2
-TARGET_RECOVERY_FSTAB := device/samsung/goyawifi/recovery/twrp.fstab
+TARGET_RECOVERY_FSTAB := device/samsung/goyawifi/rootdir/fstab.pxa988
 
 RECOVERY_VARIANT := twrp
 
-#TARGET_USERIMAGES_USE_EXT4 := true
+TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_BOOTIMAGE_PARTITION_SIZE := 8388608
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 67108864
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 6379536384
 BOARD_CACHEIMAGE_PARTITION_SIZE := 1442840576
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 22036873216
-BOARD_FLASH_BLOCK_SIZE := 4096
+#BOARD_FLASH_BLOCK_SIZE := 4096
+#BOARD_BOOTIMAGE_PARTITION_SIZE := 10485760
+#BOARD_RECOVERYIMAGE_PARTITION_SIZE := 10485760
+#BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1073741824
+#BOARD_USERDATAIMAGE_PARTITION_SIZE := 2147483648
+BOARD_FLASH_BLOCK_SIZE := 131072 # (BOARD_KERNEL_PAGESIZE * 64)
 
 # Vold
 #BOARD_VOLD_MAX_PARTITIONS := 17
@@ -89,7 +95,9 @@ TW_EXTERNAL_STORAGE_PATH := "/external_sd"
 TW_EXTERNAL_STORAGE_MOUNT_POINT := "external_sd"
 TW_NO_REBOOT_BOOTLOADER := true
 TW_HAS_DOWNLOAD_MODE := true
+TW_NO_USB_STORAGE := true
 BOARD_HAS_NO_REAL_SDCARD := true
+BOARD_SUPPRESS_SECURE_ERASE := true
 
 # Fix touchscreen axis
 RECOVERY_TOUCHSCREEN_SWAP_XY := true

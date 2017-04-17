@@ -1,10 +1,11 @@
 # Copyright (C) 2013 The Android Open Source Project
+# Copyright (C) 2013 The CyanogenMod Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
 #
-#      http://www.apache.org/licenses/LICENSE-2.0
+# http://www.apache.org/licenses/LICENSE-2.0
 #
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
@@ -12,14 +13,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Inherit from those products. Most specific first.
-$(call inherit-product, vendor/cm/config/common_full_tablet_wifionly.mk)
-# Inherit from goyawifi device
-$(call inherit-product, device/samsung/goyawifi/device_goyawifi.mk)
+LOCAL_PATH := $(call my-dir)
 
-# Set those variables here to overwrite the inherited values.
-PRODUCT_DEVICE := goyawifi
-PRODUCT_NAME := cm_goyawifi
-PRODUCT_BRAND := Samsung
-PRODUCT_MODEL := SM-T110
-PRODUCT_MANUFACTURER := samsung
+include $(CLEAR_VARS)
+LOCAL_SRC_FILES := healthd-mrvl.cpp
+LOCAL_MODULE := libhealthd.mrvl
+LOCAL_C_INCLUDES := system/core/healthd
+include $(BUILD_STATIC_LIBRARY)
