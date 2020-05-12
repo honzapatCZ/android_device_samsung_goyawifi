@@ -33,8 +33,8 @@ TARGET_CPU_SMP := true
 TARGET_BOOTLOADER_BOARD_NAME := PXA988
 ARCH_ARM_HAVE_TLS_REGISTER := true
 
-TARGET_GLOBAL_CFLAGS += -mtune=cortex-a9 -mfpu=neon -mfloat-abi=softfp
-TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a9 -mfpu=neon -mfloat-abi=softfp
+#TARGET_GLOBAL_CFLAGS += -mtune=cortex-a9 -mfpu=neon -mfloat-abi=softfp
+#TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a9 -mfpu=neon -mfloat-abi=softfp
 
 # Kernel
 TARGET_KERNEL_SOURCE  := kernel/samsung/goyawifi
@@ -57,7 +57,11 @@ BOARD_RECOVERY_SWIPE := true
 RECOVERY_FSTAB_VERSION := 2
 TARGET_RECOVERY_FSTAB := device/samsung/goyawifi/rootdir/fstab.pxa988
 
-RECOVERY_VARIANT := twrp
+#RECOVERY_VARIANT := twrp
+
+#include $(COMMON_PATH)/sepolicy/sepolicy.mk
+BOARD_SEPOLICY_DIRS += \
+    device/samsung/goyawifi/sepolicy
 
 TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_BOOTIMAGE_PARTITION_SIZE := 8388608

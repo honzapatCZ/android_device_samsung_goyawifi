@@ -12,14 +12,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Inherit from those products. Most specific first.
-$(call inherit-product, vendor/cm/config/common_full_tablet_wifionly.mk)
+# Inherit from those products. Most specific first. product/common_full_tablet_wifionly.mk
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
 # Inherit from goyawifi device
 $(call inherit-product, device/samsung/goyawifi/device_goyawifi.mk)
 
 # Set those variables here to overwrite the inherited values.
 PRODUCT_DEVICE := goyawifi
-PRODUCT_NAME := cm_goyawifi
-PRODUCT_BRAND := Samsung
+PRODUCT_NAME := full_goyawifi
+PRODUCT_BRAND := samsung
 PRODUCT_MODEL := SM-T110
 PRODUCT_MANUFACTURER := samsung
